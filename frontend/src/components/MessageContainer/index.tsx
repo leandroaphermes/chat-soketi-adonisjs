@@ -19,9 +19,7 @@ export default function MessageContainer({
 }: MessageContainerProps) {
   return (
     <div className="inline-flex flex-col p-1 drop-shadow bg-stone-800 rounded-lg">
-      {!ownerSend && (
-        <span className="text-white text-opacity-60">{userName}</span>
-      )}
+      {!ownerSend && <span className="text-slate-400">{userName}</span>}
       <div className="flex gap-2 flex-wrap md:flex-nowrap">
         <p>{message}</p>
         <DateString date={timestamp} />

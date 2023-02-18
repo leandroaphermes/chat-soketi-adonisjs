@@ -10,12 +10,10 @@ export default function DateString({ date }: DateStringProps) {
   const relative = date ? dateInstace.toRelative() : "";
   const displayTitle = date ? dateInstace.toString() : "";
 
-  console.log(dateInstace, date);
-
   return (
     <time
       dateTime={displayTitle}
-      className="text-slate-400 text-xs align-bottom"
+      className="text-neutral-500 text-xs align-bottom self-end whitespace-nowrap"
     >
       {relative}
     </time>

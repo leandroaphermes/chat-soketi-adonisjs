@@ -6,11 +6,11 @@ import MenuAside from "./components/MenuAside";
 export default function App() {
   return (
     <div className="h-full flex justify-center items-center p-10">
-      <div className="flex justify-center items-stretch gap-2 w-full h-full rounded bg-zinc-900 p-4">
-        <div className="w-3/12 :w-[300]">
+      <div className="flex justify-center items-stretch w-full h-full rounded bg-zinc-900">
+        <div className="w-1/4  p-4 bg-stone-800 rounded-l rounded-bl">
           <MenuAside />
         </div>
-        <div className="w-9/12">
+        <div className="w-full p-4">
           <ChatContainer />
         </div>
       </div>
