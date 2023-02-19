@@ -1,4 +1,4 @@
-import DateString from "../DateString";
+import DateString from "components/DateString";
 
 export type MessageContainerProps = {
   messageId: string;

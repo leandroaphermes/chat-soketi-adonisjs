@@ -1,5 +1,5 @@
-import FriendsList from "../FriendsList";
-import UserLabel from "../UserLabel";
+import FriendsList from "components/FriendsList";
+import UserLabel from "components/UserLabel";
 
 export default function MenuAside() {
   return (

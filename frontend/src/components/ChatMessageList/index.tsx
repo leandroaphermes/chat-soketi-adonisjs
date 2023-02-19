@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import MessageContainer from "../MessageContainer";
+import MessageContainer from "components/MessageContainer";
 
 const date = DateTime.local()
   .minus({

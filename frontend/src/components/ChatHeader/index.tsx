@@ -1,9 +1,11 @@
-import UserLabel from "../UserLabel";
+import UserLabel, { UserLabelProps } from "components/UserLabel";
 
-export default function ChatHeader() {
+export type ChatHeaderProps = Pick<UserLabelProps, "isOnline" | "name">;
+
+export default function ChatHeader({ isOnline, name }: ChatHeaderProps) {
   return (
     <header className="p-2 drop-shadow hover:bg-zinc-800 rounded cursor-pointer">
-      <UserLabel isOnline name="Hamaro" />
+      <UserLabel isOnline={isOnline} name={name} />
     </header>
   );
 }
