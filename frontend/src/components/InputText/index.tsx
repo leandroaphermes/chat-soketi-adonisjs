@@ -8,7 +8,7 @@ const InputText = forwardRef<
     <input
       ref={ref}
       placeholder="Say"
-      className="bg-transparent hover:bg-stone-900 drop-shadow rounded py-1 px-2 w-full"
+      className="bg-stone-800 hover:bg-stone-700 drop-shadow rounded py-1 px-2 w-full"
       {...props}
     />
   );

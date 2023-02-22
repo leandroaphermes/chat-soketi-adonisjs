@@ -1,15 +1,20 @@
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-import Button from "../../components/Button";
-import InputText from "../../components/InputText";
+import Form, { validatorRules } from "components/Base/Form";
+import Button from "components/Button";
+import InputText from "components/InputText";
+import FormItem from "components/Base/Form/FormItem";
+
+const schemaValidate = validatorRules.object({
+  email: validatorRules.string().min(8).max(64).email(),
+  password: validatorRules.string().min(6).max(64),
+});
 
 export default function PageLogin() {
   const navigate = useNavigate();
 
   function handleOnSubmit(eventForm: React.FormEvent<HTMLFormElement>) {
-    eventForm.preventDefault();
-
     toast.success("Login has success");
     console.log(eventForm);
     navigate("/");
@@ -22,38 +27,25 @@ export default function PageLogin() {
         <h4 className="text-1xl text-slate-300">The bast chat for web</h4>
       </div>
       <div>
-        <form
-          onSubmit={handleOnSubmit}
-          name="form-login"
-          method="POST"
-          className="flex flex-col gap-2"
-        >
-          <div className="p-2 rounded bg-zinc-900">
-            <label className="text-slate-200" htmlFor="input-email">
-              Email
-            </label>
-            <InputText
-              type="email"
-              name="email"
-              placeholder="email@email.com"
-              autoComplete="email"
-              id="input-email"
-            />
+        <Form onSubmit={handleOnSubmit} rules={schemaValidate}>
+          <div className="flex flex-col gap-2 p-3 rounded bg-zinc-900">
+            <FormItem label="Email" name="email" required>
+              <InputText
+                type="email"
+                placeholder="email@email.com"
+                autoComplete="email"
+              />
+            </FormItem>
+            <FormItem label="Password" name="password" required>
+              <InputText
+                type="password"
+                placeholder="***********"
+                autoComplete="current-password"
+              />
+            </FormItem>
+            <Button type="submit">Sign In</Button>
           </div>
-          <div className="p-2  rounded bg-zinc-900">
-            <label className="text-slate-200" htmlFor="input-password">
-              Password
-            </label>
-            <InputText
-              type="password"
-              name="password"
-              id="input-password"
-              placeholder="***********"
-              autoComplete="current-password"
-            />
-          </div>
-          <Button type="submit">Sign In</Button>
-        </form>
+        </Form>
       </div>
     </div>
   );
