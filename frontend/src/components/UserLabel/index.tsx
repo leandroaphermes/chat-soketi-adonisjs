@@ -15,31 +15,27 @@ const sizeTextModes: SizeModeType = {
   default: "text-md",
 };
 
-const sizeIconModes: SizeModeType = {
-  small: "w-3 h-3",
-  large: "w-5 h-5",
-  default: "w-4 h-4",
+const sizePhotoModes: SizeModeType = {
+  small: "w-8 h-8",
+  large: "w-15 h-15",
+  default: "w-10 h-10",
 };
 
 export default function UserLabel({
   isOnline,
   name,
   size = "default",
-  showOnline = true,
 }: UserLabelProps) {
   const sizeText = sizeTextModes[size];
-  const sizeIcon = sizeIconModes[size];
+  const sizePhoto = sizePhotoModes[size];
 
   return (
-    <div className="flex flex-nowrap gap-2 items-baseline">
-      {showOnline && (
-        <span
-          className={`${
-            isOnline ? "bg-yellow-500" : "bg-neutral-500"
-          } rounded-full ${sizeIcon}`}
-          title={isOnline ? "Online" : "Offline"}
-        />
-      )}
+    <div className="flex flex-nowrap gap-2 items-center">
+      <img
+        className={`${sizePhoto} rounded-full`}
+        src="https://via.placeholder.com/60"
+        alt="Image Perfio"
+      />
       <span
         className={`text-lg font-normal ${
           isOnline ? "" : "opacity-40"

@@ -13,7 +13,7 @@ export type UserListProps = {
 
 export default function UserList({ items }: UserListProps) {
   return (
-    <ul>
+    <ul className="flex flex-col gap-1">
       {items.map((user) => (
         <li key={user.id}>
           <LinkChat

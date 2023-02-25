@@ -36,6 +36,7 @@ export default function ChatFooter() {
       <button
         disabled={!newMessageText}
         className="bg-transparent hover:bg-teal-900 rounded p-1 disabled:opacity-10 disabled:cursor-not-allowed"
+        onClick={handleSubmitNewMessage}
       >
         📨
       </button>
