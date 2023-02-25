@@ -1,10 +1,17 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 import Form, { validatorRules } from "components/Base/Form";
 import Button from "components/Button";
 import InputText from "components/InputText";
 import FormItem from "components/Base/Form/FormItem";
+import useSession from "hooks/useSession";
+import { useState } from "react";
+
+type FormLoginType = {
+  email: string;
+  password: string;
+};
 
 const schemaValidate = validatorRules.object({
   email: validatorRules.string().min(8).max(64).email(),
@@ -13,11 +20,22 @@ const schemaValidate = validatorRules.object({
 
 export default function PageLogin() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const session = useSession();
 
-  function handleOnSubmit(eventForm: React.FormEvent<HTMLFormElement>) {
-    toast.success("Login has success");
-    console.log(eventForm);
-    navigate("/");
+  const [loadingButton, setLoadingButton] = useState(false);
+
+  function handleOnSubmit(values: FormLoginType) {
+    setLoadingButton(true);
+    session
+      .signIn(values.email, values.password)
+      .then(() => {
+        navigate(location.state?.from?.pathname || "/");
+      })
+      .catch(() => {
+        toast.error("Email or password invalid");
+        setLoadingButton(false);
+      });
   }
 
   return (
@@ -43,7 +61,9 @@ export default function PageLogin() {
                 autoComplete="current-password"
               />
             </FormItem>
-            <Button type="submit">Sign In</Button>
+            <Button htmlType="submit" loading={loadingButton}>
+              Sign In
+            </Button>
           </div>
         </Form>
       </div>

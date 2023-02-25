@@ -5,22 +5,25 @@ export type ButtonProps = {
   title?: string;
   disabled?: boolean;
   loading?: boolean;
-} & Pick<HTMLButtonElement, "type">;
+  htmlType?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
+};
 
 export default function Button({
   children,
   disabled,
   loading,
   title,
-  type,
+  htmlType,
 }: ButtonProps) {
   return (
     <button
-      className="p-1 bg-zinc-800 rounded"
+      type={htmlType}
+      className={"p-1 bg-zinc-800 rounded disabled:opacity-70"}
       title={title}
       disabled={disabled || loading}
       aria-busy={loading}
     >
+      {loading && "👀 "}
       {children}
     </button>
   );

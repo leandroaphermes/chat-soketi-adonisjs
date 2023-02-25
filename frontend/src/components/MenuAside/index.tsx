@@ -3,7 +3,7 @@ import UserLabel from "components/UserLabel";
 
 export default function MenuAside() {
   return (
-    <div className="h-full flex justify-between flex-col">
+    <div className="w-full h-full flex justify-between flex-col">
       <div className=" p-2">
         <UserLabel isOnline name="Hamaro" size="large" showOnline={false} />
       </div>
